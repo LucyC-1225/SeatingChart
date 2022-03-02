@@ -32,11 +32,24 @@ public class Main {
         System.out.println("Testing");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
         System.out.println(generatedSeatNum);
-        System.out.println("How to read array example: Moiz's old seat was seat 1. New seat is seat " + generatedSeatNum.get(0));
+        System.out.println("How to read array example: Moiz's old seat was seat 1. New seat is seat " + generatedSeatNum.get(0));\
+
 
         String[] newSeats = new String[34];
         for (int i = 0; i < newSeats.length; i++){
             newSeats[generatedSeatNum.get(i) - 1] = seats[i];
+        }
+        String[][] seatingChart = new String[3][12];
+        int index = 0;
+        for (int r = 0; r < seatingChart.length; r++){
+            for (int c = 0; c < seatingChart[c].length; c++){
+                if (r == 0 && c == 10 || r == 0 && c == 1){
+                    seatingChart[r][c] = "";
+                } else {
+                    seatingChart[r][c] = newSeats[index];
+                    index++;
+                }
+            }
         }
 
         System.out.println("Did everyone get new seats?: " + isnewSeats(seats, newSeats));
