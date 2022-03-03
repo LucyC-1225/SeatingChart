@@ -32,7 +32,7 @@ public class Main {
         System.out.println("Testing");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
         System.out.println(generatedSeatNum);
-        System.out.println("How to read array example: Moiz's old seat was seat 1. New seat is seat " + generatedSeatNum.get(0));\
+        System.out.println("How to read array example: Moiz's old seat was seat 1. New seat is seat " + generatedSeatNum.get(0));
 
 
         String[] newSeats = new String[34];
@@ -42,8 +42,8 @@ public class Main {
         String[][] seatingChart = new String[3][12];
         int index = 0;
         for (int r = 0; r < seatingChart.length; r++){
-            for (int c = 0; c < seatingChart[c].length; c++){
-                if (r == 0 && c == 10 || r == 0 && c == 1){
+            for (int c = 0; c < seatingChart[0].length; c++){
+                if (r == 0 && c == 10 || r == 0 && c == 11){
                     seatingChart[r][c] = "";
                 } else {
                     seatingChart[r][c] = newSeats[index];
@@ -51,38 +51,27 @@ public class Main {
                 }
             }
         }
-
         System.out.println("Did everyone get new seats?: " + isnewSeats(seats, newSeats));
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("New seats!!");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        for (int i = 0; i <= 9; i++){
-            String str = "|" + (i + 1) + ". " + newSeats[i];
-            String extraSpace = "";
-            while (str.length() + extraSpace.length() < 16){
-                extraSpace += " ";
+        int ind = 0;
+        for (int r = 0; r < seatingChart.length; r++){
+            for (int c = 0; c < seatingChart[0].length; c++){
+                if (r == 0 && c == 10 || r == 0 && c == 11){
+                    System.out.print("|               | ");
+                } else {
+                    String str = "|" + (ind + 1) + ". " + seatingChart[r][c];
+                    String extraSpace = "";
+                    while (str.length() + extraSpace.length() < 16){
+                        extraSpace += " ";
+                    }
+                    System.out.print(str + extraSpace + "| ");
+                    ind++;
+                }
             }
-            System.out.print(str + extraSpace + "| ");
+            System.out.println();
         }
-        System.out.println();
-        for (int i = 10; i <= 21; i++){
-            String str = "|" + (i + 1) + ". " + newSeats[i];
-            String extraSpace = "";
-            while (str.length() + extraSpace.length() < 16){
-                extraSpace += " ";
-            }
-            System.out.print(str + extraSpace + "| ");
-        }
-        System.out.println();
-        for (int i = 22; i <= 33; i++){
-            String str = "|" + (i + 1) + ". " + newSeats[i];
-            String extraSpace = "";
-            while (str.length() + extraSpace.length() < 16){
-                extraSpace += " ";
-            }
-            System.out.print(str + extraSpace + "| ");
-        }
-        System.out.println();
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
     public static int rand(int min, int max){
