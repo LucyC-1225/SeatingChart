@@ -64,7 +64,7 @@ public class Main {
             }
         }
         System.out.println("Did everyone get new seats?: " + isnewSeats(seats, newSeats));
-        System.out.println("Did everyone get new partners?: " + newPartners(seats, newSeats));
+        System.out.println("Did everyone get new neighbors?: " + newPartners(seats, newSeats));
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("New seats!!");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
