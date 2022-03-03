@@ -18,9 +18,21 @@ public class Main {
         for (int i = 1; i <= 34; i++){
             int index = rand(0, avaiableSeatNum.size() - 1);
             int randSeatNum = avaiableSeatNum.get(index);
-            while (randSeatNum == i){
-                index = rand(0, avaiableSeatNum.size() - 1);
-                randSeatNum = avaiableSeatNum.get(index);
+            if (i - 1 == 0 || i - 1 == 11 || i - 1 == 23){
+                while (randSeatNum == i || randSeatNum == i + 1){
+                    index = rand(0, avaiableSeatNum.size() - 1);
+                    randSeatNum = avaiableSeatNum.get(index);
+                }
+            } else if (i - 1 == 10 || i - 1 == 22 || i - 1 == 34){
+                while (randSeatNum == i || randSeatNum == i - 1){
+                    index = rand(0, avaiableSeatNum.size() - 1);
+                    randSeatNum = avaiableSeatNum.get(index);
+                }
+            } else {
+                while (randSeatNum == i){
+                    index = rand(0, avaiableSeatNum.size() - 1);
+                    randSeatNum = avaiableSeatNum.get(index);
+                }
             }
             if (i == 21){
                 generatedSeatNum.add(emptySeat);
@@ -52,6 +64,7 @@ public class Main {
             }
         }
         System.out.println("Did everyone get new seats?: " + isnewSeats(seats, newSeats));
+        System.out.println("Did everyone get new partners?: " + newPartners(seats, newSeats));
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
         System.out.println("New seats!!");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -81,6 +94,24 @@ public class Main {
         for (int i = 0; i < oldSeats.length; i++){
             if (oldSeats[i].equals(newSeats[i])){
                 return false;
+            }
+        }
+        return true;
+    }
+    public static boolean newPartners(String[] oldSeats, String[] newSeats){
+        for (int i = 0; i < oldSeats.length; i++){
+            if (i == 0 || i == 10 || i == 22){
+                if (oldSeats[i].equals(newSeats[i]) || oldSeats[i + 1].equals(newSeats[i + 1])){
+                    return false;
+                }
+            } else if (i == 9 || i == 21 || i == 33){
+                if (oldSeats[i].equals(newSeats[i]) || oldSeats[i - 1].equals(newSeats[i - 1])){
+                    return false;
+                }
+            } else {
+                if (oldSeats[i].equals(newSeats[i]) || oldSeats[i + 1].equals(newSeats[i + 1]) || oldSeats[i - 1].equals(newSeats[i - 1])){
+                    return false;
+                }
             }
         }
         return true;
